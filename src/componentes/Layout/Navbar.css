@@ -1,0 +1,173 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-h);
+  background: rgba(15, 15, 19, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+}
+
+.navbar-titulo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+/* ── Menú desktop ── */
+.menu-desktop {
+  display: flex;
+}
+
+.menu ul {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.menu ul li button {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  transition:
+    color 0.2s,
+    background 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.menu ul li button:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.menu ul li button.activo {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* ── Botón hamburguesa ── */
+.hamburguesa {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hamburguesa:hover {
+  background: var(--bg-hover);
+}
+
+.hamburguesa span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animación X cuando está abierto */
+.hamburguesa.abierto span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburguesa.abierto span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburguesa.abierto span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Menú mobile desplegable ── */
+.menu-mobile {
+  position: absolute;
+  top: var(--navbar-h);
+  left: 0;
+  right: 0;
+  background: rgba(15, 15, 19, 0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  animation: slideDown 0.2s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-mobile .menu ul {
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.menu-mobile .menu ul li button {
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .menu-desktop {
+    display: none;
+  }
+
+  .hamburguesa {
+    display: flex;
+  }
+}
+
+/* ── Acciones navbar (tema + hamburguesa) ── */
+.navbar-acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-tema {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.15s;
+}
+
+.btn-tema:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
